@@ -1,7 +1,5 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using OpenQA.Selenium;
 
 namespace Alura.LeilaoOnline.Selenium.PageObjects
 {
@@ -9,46 +7,51 @@ namespace Alura.LeilaoOnline.Selenium.PageObjects
     {
         private IWebDriver driver;
         private By byFormRegistro;
-        private By byInputName;
+        private By byInputNome;
         private By byInputEmail;
         private By byInputSenha;
         private By byInputConfirmSenha;
         private By byBotaoRegistro;
-        private By bySpanErrorNome;
-        private By bySpanErrorEmail;
+        private By bySpanErroEmail;
+        private By bySpanErroNome;
 
-        public string NomeMensageErro => driver.FindElement(bySpanErrorNome).Text;
-        public string EmailMensageErro => driver.FindElement(bySpanErrorEmail).Text;
+        public string EmailMensagemErro => driver.FindElement(bySpanErroEmail).Text;
+
+        public string NomeMensagemErro => driver.FindElement(bySpanErroNome).Text;
 
         public RegistroPO(IWebDriver driver)
         {
             this.driver = driver;
             byFormRegistro = By.TagName("form");
-            byInputName = By.Id("Nome");
+            byInputNome = By.Id("Nome");
             byInputEmail = By.Id("Email");
             byInputSenha = By.Id("Password");
             byInputConfirmSenha = By.Id("ConfirmPassword");
             byBotaoRegistro = By.Id("btnRegistro");
-            bySpanErrorNome = By.CssSelector("span.msg-erro[data-valmsg-for=Nome]");
-            bySpanErrorEmail = By.CssSelector("span.msg-erro[data-valmsg-for=Email]");
+            bySpanErroEmail = By.CssSelector("span.msg-erro[data-valmsg-for=Email]");
+            bySpanErroNome = By.CssSelector("span.msg-erro[data-valmsg-for=Nome]");
         }
 
-        public void Navegar()
+        public void Visitar()
         {
             driver.Navigate().GoToUrl("http://localhost:5000");
         }
 
-        public void SubmeteFomulario()
+        public void SubmeteFormulario()
         {
             driver.FindElement(byBotaoRegistro).Click();
         }
 
-        public void PreencherFormulario(string Nome, string Email, string Senha, string ConfirmSenha)
+        public void PreencheFormulario(
+            string nome, 
+            string email, 
+            string senha, 
+            string confirmSenha)
         {
-            driver.FindElement(byInputName).SendKeys(Nome);
-            driver.FindElement(byInputEmail).SendKeys(Email);
-            driver.FindElement(byInputSenha).SendKeys(Senha);
-            driver.FindElement(byInputConfirmSenha).SendKeys(ConfirmSenha);
+            driver.FindElement(byInputNome).SendKeys(nome);
+            driver.FindElement(byInputEmail).SendKeys(email);
+            driver.FindElement(byInputSenha).SendKeys(senha);
+            driver.FindElement(byInputConfirmSenha).SendKeys(confirmSenha);
         }
     }
 }

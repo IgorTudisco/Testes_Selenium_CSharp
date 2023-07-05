@@ -12,41 +12,40 @@ namespace Alura.LeilaoOnline.Selenium.Testes
     public class AoEfetuarLogin
     {
         private IWebDriver driver;
-        private LoginPO loginPO;
 
         public AoEfetuarLogin(TestFixture fixture)
         {
-            driver = fixture.Driver;
-            loginPO = new LoginPO(driver);
+            driver = fixture.Driver;    
         }
 
         [Fact]
-        public void DadosCredenciaisValidasDeveIrParaDashboard()
+        public void DadoCredenciaisValidasDeveIrParaDashboard()
         {
-            // 
-            loginPO.Navagar();
+            //arrange
+            var loginPO = new LoginPO(driver);
+            loginPO.Visitar();
             loginPO.PreencheFormulario("fulano@example.org", "123");
 
-            // Act
+            //act
             loginPO.SubmeteFormulario();
 
-            // Assert
+            //assert
             Assert.Contains("Dashboard", driver.Title);
         }
 
         [Fact]
-        public void DadosCredenciaisInvalidasDeveContinuarNaPageLogin()
+        public void DadoCrendenciasInvalidasDeveContinuarLogin()
         {
-            // 
-            loginPO.Navagar();
-            loginPO.PreencheFormulario("fulano@example.org", "1234");
+            //arrange
+            var loginPO = new LoginPO(driver);
+            loginPO.Visitar();
+            loginPO.PreencheFormulario("fulano@example.org", "");
 
-            // Act
+            //act
             loginPO.SubmeteFormulario();
 
-            // Assert
+            //assert
             Assert.Contains("Login", driver.PageSource);
         }
-
     }
 }

@@ -43,16 +43,16 @@ namespace Alura.LeilaoOnline.Selenium.Testes
         }
 
         [Fact]
-        public void DadoChromeAbertoNaoDeveMostrarMensagemDeErro()
+        public void DadoChromeAbertoFormRegistroNaoDeveMostrarMensagensDeErro()
         {
             //arrange
 
             //act
             driver.Navigate().GoToUrl("http://localhost:5000");
-            var form = driver.FindElement(By.TagName("form"));
-            var spans = form.FindElements(By.TagName("span"));
 
             //assert
+            var form = driver.FindElement(By.TagName("form"));
+            var spans = form.FindElements(By.TagName("span"));
             foreach (var span in spans)
             {
                 Assert.True(string.IsNullOrEmpty(span.Text));

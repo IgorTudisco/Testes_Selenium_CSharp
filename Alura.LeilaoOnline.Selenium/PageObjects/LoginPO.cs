@@ -1,7 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Alura.LeilaoOnline.Selenium.PageObjects
 {
@@ -20,21 +17,20 @@ namespace Alura.LeilaoOnline.Selenium.PageObjects
             byBotaoLogin = By.Id("btnLogin");
         }
 
-        public void Navagar()
+        public void Visitar()
         {
             driver.Navigate().GoToUrl("http://localhost:5000/Autenticacao/Login");
+            driver.Manage().Window.Size = new System.Drawing.Size(1920, 1040);
         }
 
         public void PreencheFormulario(string login, string senha)
         {
             driver.FindElement(byInputLogin).SendKeys(login);
             driver.FindElement(byInputSenha).SendKeys(senha);
-
         }
 
         public void SubmeteFormulario()
         {
-            // The submit will only work because the button is inside the forms.
             driver.FindElement(byBotaoLogin).Submit();
         }
 
