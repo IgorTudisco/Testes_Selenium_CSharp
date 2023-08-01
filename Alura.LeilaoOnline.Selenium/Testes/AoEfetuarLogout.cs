@@ -22,14 +22,16 @@ namespace Alura.LeilaoOnline.Selenium.Testes
         public void TesteDadoLoginValidoDeveIrParaHomeLogada()
         {
             // Arrange
-            var loginPO = new LoginPO(driver);
-            loginPO.Visitar();            
-            loginPO.PreencheFormulario("fulano@example.org", "123");
-            loginPO.SubmeteFormulario();
+            new LoginPO(driver)
+                .Visitar()
+                .InformarEmail("fulano@example.org")
+                .InformarSenha("123")
+                .EfetuarLogin();
+
             var dashboardPO = new DashboardInteressadaPO(driver);
 
             // Act
-            dashboardPO.EfetuarLogout();
+            dashboardPO.Menu.EfetuarLogout();
 
             // Assert
 
