@@ -15,6 +15,7 @@ namespace Alura.LeilaoOnline.Selenium.Fixtures
         public TestFixture()
         {
             Driver = new ChromeDriver(TestHelper.PastaDoExecutavel);
+            // e.g. of implicit Timeouts Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
         //TearDown
