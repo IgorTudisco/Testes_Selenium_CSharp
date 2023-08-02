@@ -12,12 +12,15 @@ namespace Alura.LeilaoOnline.Selenium.PageObjects
         private IWebDriver  driver;
         private By byLogoutLink;
         private By byMeuPerfilLink;
+        private By byTableValor;
 
         public MenuLogadoPO(IWebDriver driver)
         {
             this.driver = driver;
             byLogoutLink = By.Id("logout");
             byMeuPerfilLink = By.Id("meu-perfil");
+            // XPath is used to find an element whose references are dynamic
+            byTableValor = By.XPath("//div[@class='card minhas-ofertas']/*/table/tbody/tr[last()]");
         }
         public void EfetuarLogout()
         {
