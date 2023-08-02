@@ -9,6 +9,6 @@ Selenium WebDriver e C# parte 1: testes da sua web app
 
 Selenium WebDriver e C# parte 2: outros recursos
 
-<!--<img src="Certificado/Certificado2.jpg" style="width: 60%;"> 
+<img src="Certificados/Certificado2.jpg" style="width: 60%;"> 
 
-<a href="">Link certificado</a>-->
+<a href="https://cursos.alura.com.br/certificate/igortudisco/selenium-csharp-mais-recursos">Link certificado</a>
